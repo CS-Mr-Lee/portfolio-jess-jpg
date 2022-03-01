@@ -1,5 +1,5 @@
 /**
- * This program constructs a human
+ * This program constructs a human and changes their stats (using methods from the Human class)
  * -> A name, weight, energy level, age, and height
  *
  * Course: ICS4U1
