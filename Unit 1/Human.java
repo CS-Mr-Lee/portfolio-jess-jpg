@@ -197,29 +197,5 @@ public class Human {
   */
   public void birthday() {
     this.age = age + 1;
-  }
-  
-  
+  } 
 }
-
-/*
- * It will have:
- * 
- * Attributes
- * name
- * weight (in kg)
- * energyLevel (from 0 - 100%)
- * 2 other attributes
- * Constructor
- * Appropriate Access/Mutator Methods
- * Other methods
- * void sleep(int hours) - raises energyLevel by hours * 10%
- * void run(double km) - loses energy using some formula, decreases weight by
- * 0.001 per km
- * String toString() - returns all the attributes of the human in a String
- * ie. "Name: Mr. Lee \nAge: 54 \n....."
- * void main(String[] args)
- * create two humans
- * demonstrate using the accessors/mutators successfully
- * demonstrate using the other methods successfully
- */
