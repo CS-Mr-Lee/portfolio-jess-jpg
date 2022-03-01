@@ -1,3 +1,13 @@
+/**
+ * This program constructs a human
+ * -> A name, weight, energy level, age, and height
+ *
+ * Course: ICS4U1
+ * Date: Feb. 28th, 2021
+ * @author Jessica Lu
+ * @author Zain Siddiqui
+ */
+
 public class Main {
   public static void main(String[] args) {
     // create a human with name: Alex, weight: 65 kg, energy level: 80%, age: 25 years old, height: 170 cm
@@ -40,25 +50,3 @@ public class Main {
     System.out.println(human1.getName() + " magically got all their energy back! They now have " + FULL_ENERGY + "% of their energy.");
   }  
 }
-
-/*
- * It will have:
- * 
- * Attributes
- * name
- * weight (in kg)
- * energyLevel (from 0 - 100%)
- * 2 other attributes
- * Constructor
- * Appropriate Access/Mutator Methods
- * Other methods
- * void sleep(int hours) - raises energyLevel by hours * 10% >>> this is so little omg
- * void run(double km) - loses energy using some formula, decreases weight by
- * 0.001 per km
- * String toString() - returns all the attributes of the human in a String
- * ie. "Name: Mr. Lee \nAge: 54 \n....."
- * void main(String[] args)
- * create two humans
- * demonstrate using the accessors/mutators successfully
- * demonstrate using the other methods successfully
- */
