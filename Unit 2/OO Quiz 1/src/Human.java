@@ -3,9 +3,8 @@
  * -> A name, weight, energy level, age, and height
  *
  * Course: ICS4U1
- * Date: Feb. 28th, 2021
+ * Date: Mar. 1st, 2021
  * @author Jessica Lu
- * @author Zain Siddiqui
  */
 
 public class Human {
