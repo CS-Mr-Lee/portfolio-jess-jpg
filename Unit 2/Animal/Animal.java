@@ -166,13 +166,13 @@ public class Animal {
      Description: set a new energy level
      @param newEnergyLevel new possible energy level
      */
-    public void setEnergyLevel(double newEnergyLevel) {
+    public void setEnergyLevel(int newEnergyLevel) {
         if (newEnergyLevel < 0) {
             this.energyLevel = 0;
         } else if (newEnergyLevel > 100) {
             this.energyLevel = 100;
         } else {
-            this.energyLevel = energyLevel;
+            this.energyLevel = newEnergyLevel;
         }
     }
 
@@ -187,8 +187,46 @@ public class Animal {
 
     /* other methods */
 
-    // still needs eat and sleep
-  
+    /**
+     Name: run
+     Description: animal runs and loses energy.
+     For each 50 metres = -1% energy (not multiplied, added)
+     @param metres the distance ran in metres
+     */
+    public void run(int metres){
+        if (getEnergyLevel() < 50) { // animal must have at least 50% energy to run
+            System.out.print(getName() + " doesn't have enough energy to run this far. (Try sleeping!)");
+        } else if (metres > 0) {
+            this.energyLevel = this.energyLevel - metres / 50;
+
+            System.out.println(getName() + " went on a run. They ran for " + metres + "m and lost some energy.");
+            System.out.println("They now have an energy level of " + getEnergyLevel() + "%.");
+        }
+    }
+
+    /**
+     * Name: eat
+     * Description: Dog eats and gains energy and weight
+     For every gram of food, the dog's weight is the grams plus 10 added to the original weight
+     For every gram of food, the dog's energy level is the grams divide by 10 as a percentage of the original energy level added to the energy level
+     * @param grams
+     */
+    public void eat(double grams){
+        this.weight = this.weight + grams / 10; // each 10 grams is one kg of weight
+
+        setWeight(getEnergyLevel() + (int) (0.01 * (grams / 10)) * getEnergyLevel());    // the energy level is the grams divide by 10 as a percentage of the original energy level added to the energy level
+
+        // keep the energy level within 0-100
+        if (getEnergyLevel() > 100) {          // if the energy level is greater than 100
+            setEnergyLevel(100);
+        } else if (getEnergyLevel() < 0) {    // if the energy level is less than 0
+            setEnergyLevel(0);
+        }
+
+        System.out.println(getName() + " ate food which weighted " + grams + "kg");
+        System.out.println(getName() + " has a new energy level of " + getEnergyLevel() + "% and has a new weight of " + getWeight() + "kg");
+    }
+
     /**
      Name: birthday
      Description: the turtle gets one year older!
@@ -206,8 +244,8 @@ public class Animal {
     public String toString() {
         String attributes;
 
-        // String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired
-        attributes = "Name: " + this.name + "\nBreed: " + this.breed + "\nColour: " + this.colour + "\nAge: " + this.age + "\nEnergy Level: " + this.energyLevel + "%\nWeight: " + this.weight + " kg\nIs tired: " + this.isTired;
+        // String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired, boolean isColdBlooded
+        attributes = "Name: " + this.name + "\nBreed: " + this.breed + "\nColour: " + this.colour + "\nAge: " + this.age + "\nEnergy Level: " + this.energyLevel + "%\nWeight: " + this.weight + " kg\nIs tired: " + this.isTired + "\nCold Blooded: " + this.isColdBlooded;
 
         return attributes;
     }

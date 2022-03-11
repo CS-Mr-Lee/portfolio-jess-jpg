@@ -85,9 +85,9 @@ public class Dog_OLD {
   */
 
     /**
-    Name: getName
-    Description: return the dog name
-    */
+     Name: getName
+     Description: return the dog name
+     */
     public String getName() {return this.name;}
 
     /**
@@ -185,6 +185,30 @@ public class Dog_OLD {
         }
     }
 
+    /**
+     Name: run
+     Description: Dog runs and loses energy.
+     For each 50 metres = -1% energy (not multiplied, added)
+     @param metres the distance ran in metres
+     */
+    public void run(double metres){
+        if (getEnergyLevel() < 50) {
+            System.out.print(getName() + " doesn't have enough energy to run this far. (Try sleeping!)");
+        } else if (metres > 0) {
+            this.energyLevel = (int)(this.energyLevel - metres/50);
+            
+            System.out.println(getName() + " went on a run. They ran for " + metres + "m and lost some energy.");
+            System.out.println("They now have an energy level of " + getEnergyLevel() + "%.");
+        }
+    }
+
+    /**
+     * Name: eat
+     * Description: Dog eats and gains energy and weight
+     For every gram of food, the dog's weight is the grams plus 10 added to the original weight
+     For every gram of food, the dog's energy level is the grams divide by 10 as a percentage of the original energy level added to the energy level
+     * @param grams
+     */
     public void eat(double grams){
 
         this.weight = this.weight + grams / 10;          // the dog's weight is the grams plus 10 added to the original weight
@@ -203,10 +227,10 @@ public class Dog_OLD {
     }
 
     /**
-    Name: sleep
-    Description: Dog sleeps and gains energy
-    @param sleep the minutes the dog spent sleeping
-    */
+     Name: sleep
+     Description: Dog sleeps and gains energy
+     @param sleep the minutes the dog spent sleeping
+     */
     public void sleep ( int sleep) {
         if (isTired) {
             if (sleep > 60) {
@@ -229,12 +253,12 @@ public class Dog_OLD {
         } else {
             System.out.println(this.name + " is not tired enough to sleep");
         }
-        
+
     }
     /**
-    Name: birthday
-    Description: the dog gets one year older!
-    */
+     Name: birthday
+     Description: the dog gets one year older!
+     */
     public void birthday() {
         this.age = this.age + 1;
         System.out.println("It's " + this.name + "'s birthday! " + this.name + " is now " + this.age + " years old.");

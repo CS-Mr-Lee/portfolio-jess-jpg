@@ -25,10 +25,27 @@ public class Turtle extends Animal {
      @param colour the colour of the turtle
      @param age the age of the turtle
      @param weight the weight of the turtle in kg
+     @param isTired whether the turtle is tired or not
+     @param isColdBlooded whether the turtle is cold blooded or not
+     */
+    public Turtle(String name, String breed, String colour, int age, int energyLevel, double weight, boolean isTired, boolean isColdBlooded) {
+        super(name, breed, colour, age, weight, energyLevel, isTired, isColdBlooded);
+        this.isPet = false;
+        this.hasHome = false;
+    }
+
+    /**
+     Name: Turtle
+     Description: creates a basic turtle
+     @param name the name of the turtle
+     @param breed the breed of the turtle
+     @param colour the colour of the turtle
+     @param age the age of the turtle
+     @param weight the weight of the turtle in kg
      @param isPet whether the turtle is a pet or not
      @param isTired whether the turtle is tired or not
      @param hasHome whether the turtle has a home or not
-     @param isColdBlooded
+     @param isColdBlooded whether the turtle is cold blooded or not
      */
     public Turtle(String name, String breed, String colour, int age, int energyLevel, double weight, boolean isPet, boolean isTired, boolean hasHome, boolean isColdBlooded) {
         super(name, breed, colour, age, weight, energyLevel, isTired, isColdBlooded);
@@ -90,6 +107,7 @@ public class Turtle extends Animal {
 
     /* other methods */
 
+    @Override
     /**
      Name: run
      Description: turtle runs and loses energy. for each 40 metres = -1% energy (not multiplied, added)
@@ -130,15 +148,17 @@ public class Turtle extends Animal {
         }
     }
 
+    @Override
     /**
      Name: eat
      Description: turtle eats food and gains energy level. for each 50 grams = + 1% energy (not multiplied, added)
      @param grams the amount of food eaten in grams
      */
-    public void eat(int grams) {
+    public void eat(double grams) {
         final int GRAMS_TO_ENERGY = 50; // 50 grams = 1%
         if (grams > 0) { // only if the weight is positive (it actually exists)
-            super.setEnergyLevel(getEnergyLevel() + grams / GRAMS_TO_ENERGY); // old energy + gained energy
+            super.setEnergyLevel(getEnergyLevel() + (int)(grams / GRAMS_TO_ENERGY)); // old energy + gained energy
+            super.setWeight(getWeight() + grams); // gain weight
         }
 
         // if energy is more than 100%, bring down to 100% (max)
@@ -181,6 +201,7 @@ public class Turtle extends Animal {
         }
     }
 
+    @Override
     /**
      Name: toString
      Description: returns all turtle attributes

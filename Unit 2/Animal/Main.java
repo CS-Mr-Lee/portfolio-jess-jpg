@@ -21,8 +21,9 @@ public class Main {
   - it's their birthday
   - and then (with mutator) they are now suddenly a pet
     */
-        // creates a turtle
-        Turtle turtle = new Turtle("Donatello", "Snapping Turtle", "Brown", 45, 20, 20, false, false, false);
+      
+        // creates an Animal / Turtle
+        Animal turtle = new Turtle("Donatello", "Snapping Turtle", "Brown", 45, 20, 20, false, false, false, true);
 
         // outputs turtle attributes
         System.out.println("Say hi to this new turtle!");
@@ -31,44 +32,49 @@ public class Main {
 
         // turtle goes on a fun journey
         try {
-            System.out.println(turtle.getName() + " wants to go on a swim. They try to swim 10000 metres.");
-            turtle.swim(10000); // tries to swim but can't (not enough energy)
-            Thread.sleep(1000);
-            System.out.println();
+            if (turtle instanceof Turtle) { // only if the turtle object is an instance of the Turtle class (it is)
+                System.out.println(turtle.getName() + " wants to go on a swim. They try to swim 10000 metres.");
+              
+                // casts the turtle (that is an Animal) into a Turtle so it can use methods that come from the Turtle class
+                ((Turtle)turtle).swim(10000); // tries to swim but can't (not enough energy)
+                Thread.sleep(1000);
+                System.out.println();
 
-            System.out.println("They try to go to sleep.");
-            turtle.sleep(); // tries to sleep but can't (no home)
-            Thread.sleep(1000);
-            System.out.println();
+                System.out.println("They try to go to sleep.");
+                ((Turtle)turtle).sleep(); // tries to sleep but can't (no home)
+                Thread.sleep(1000);
+                System.out.println();
 
-            turtle.buildHome(); // successfully builds a home
-            Thread.sleep(1000);
-            System.out.println();
+                ((Turtle)turtle).buildHome(); // successfully builds a home
+                Thread.sleep(1000);
+                System.out.println();
 
-            turtle.sleep(); // successfully goes to sleep
-            Thread.sleep(1000);
-            System.out.println();
+                ((Turtle)turtle).sleep(); // successfully goes to sleep
+                Thread.sleep(1000);
+                System.out.println();
 
-            turtle.run(500); // successfully runs
-            Thread.sleep(1000);
-            System.out.println();
+                turtle.run(500); // successfully runs
+                Thread.sleep(1000);
+                System.out.println();
 
-            turtle.birthday(); // birthday woo
-            Thread.sleep(1000);
-            System.out.println();
+                turtle.birthday(); // birthday woo
+                Thread.sleep(1000);
+                System.out.println();
 
-            System.out.println("All of a sudden, " + turtle.getName() + " gets adopted (how? I don't know!) and is now a pet. WOO!");
-            turtle.setIsPet(true);
+                System.out.println("All of a sudden, " + turtle.getName() + " gets adopted (how? I don't know!) and is now a pet. WOO!");
+                ((Turtle)turtle).setIsPet(true);
+            }
+
         } catch (Exception e) {
         }
 
-      System.out.println();
-      System.out.println("------------------");
-      System.out.println();
-      
+        System.out.println();
+        System.out.println("------------------");
+        System.out.println();
 
-        // stats for three dogs
-        Dog thisDog = new Dog("Rachel", "Yellow", 17, 20.5, 50, false, false);
+
+        // create a dog
+        Dog thisDog = new Dog("Rachel", "Bichon-Frise", "Yellow", 17, 20.5, 50, false, false, false);
 
         // outputs dog attributes
         System.out.println("Say hi to this new dog!");
@@ -76,35 +82,38 @@ public class Main {
         System.out.println();
 
         try {
-            Thread.sleep(1000);
+            if (thisDog instanceof Dog) {
+                Thread.sleep(1000);
 
-            System.out.println(thisDog.getName() + " goes out to play");
-            thisDog.play(110);          // plays for more than 100 minutes
-            Thread.sleep(1000);
-            System.out.println();
+                System.out.println(thisDog.getName() + " goes out to play");
+                ((Dog)thisDog).play(110);          // plays for more than 100 minutes
+                Thread.sleep(1000);
+                System.out.println();
 
+                ((Dog)thisDog).play(20);           // plays for less than 100 minutes
+                Thread.sleep(1000);
+                System.out.println();
 
-            thisDog.play(20);           // plays for less than 100 minutes
-            Thread.sleep(1000);
-            System.out.println();
+                ((Dog)thisDog).run(600);               // successfully runs
+                Thread.sleep(1000);
+                System.out.println();
 
-            System.out.println(thisDog.getName() + " tries to eat");
-            thisDog.eat(20);           // Dog eats and replenishes energy and gains weight
-            Thread.sleep(1000);
-            System.out.println();
+                System.out.println(thisDog.getName() + " tries to eat");
+                ((Dog)thisDog).eat(20);           // Dog eats and replenishes energy and gains weight
+                Thread.sleep(1000);
+                System.out.println();
 
-            System.out.println(thisDog.getName() + " tries to sleep");
-            thisDog.sleep(70);               // Dog sleeps and is no longer tired, and replenishes energy level
-            Thread.sleep(1000);
-            System.out.println();
+                System.out.println(thisDog.getName() + " tries to sleep");
+                ((Dog)thisDog).sleep(70);               // Dog sleeps and is no longer tired, and replenishes energy level
+                Thread.sleep(1000);
+                System.out.println();
 
-            System.out.println(thisDog.getName() + "'s birthday! WOO!");
-            thisDog.birthday();              // Dog has another birthday
-            Thread.sleep(1000);
-            System.out.println();
-
+                System.out.println(thisDog.getName() + "'s birthday! WOO!");
+                ((Dog)thisDog).birthday();              // Dog has another birthday
+                Thread.sleep(1000);
+                System.out.println();
+            }
         } catch (Exception e) {
         }
     }
 }
-
